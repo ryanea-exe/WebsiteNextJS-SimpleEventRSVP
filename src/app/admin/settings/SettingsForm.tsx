@@ -9,10 +9,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { EventSetting } from '@prisma/client'
 
-// Use a fallback for useActionState since React 18 / Next 14 handles it via useActionState
-// or if it's older Next 14 it might be useFormState.
-import { useFormState } from 'react-dom'
-
 function SubmitButton() {
   const { pending } = useFormStatus()
 
@@ -36,7 +32,7 @@ function formatDateForInput(date: Date | string | undefined | null) {
 }
 
 export default function SettingsForm({ initialData }: { initialData: EventSetting | null }) {
-  const [state, formAction] = useFormState(updateSettings, null)
+  const [state, formAction] = useActionState(updateSettings, null)
 
   return (
     <Card>

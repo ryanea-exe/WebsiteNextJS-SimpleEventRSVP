@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import { logoutAction } from '@/app/actions/auth'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
@@ -19,6 +20,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             <Link href="/" className="block px-4 py-2 rounded-md text-sm font-medium text-blue-600 hover:bg-blue-50">
               Lihat Website
             </Link>
+            <form action={logoutAction}>
+              <button type="submit" className="w-full text-left block px-4 py-2 mt-2 rounded-md text-sm font-medium text-red-600 hover:bg-red-50">
+                Logout
+              </button>
+            </form>
           </div>
         </nav>
       </aside>
